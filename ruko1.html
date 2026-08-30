@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="color-scheme" content="light only">
   <title>Sistem Stok Lokasi</title>
+  <link rel="manifest" href="manifest-ruko1.json">
+  <meta name="theme-color" content="#4A3018">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ruko 1">
+  <meta name="mobile-web-app-capable" content="yes">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { overflow-x: hidden; width: 100%; max-width: 100vw; margin: 0; padding: 0; color-scheme: light; background-color: #EEDDC8; }
@@ -459,6 +467,13 @@
     }
 
     function keluarSistem() { localStorage.removeItem('sesi_lokasi'); window.location.reload(); }
+
+    
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('service-worker.js').catch(function (e) { console.log('SW gagal:', e); });
+      });
+    }
 
     document.addEventListener('DOMContentLoaded', cobaPulihkanSesi);
   </script>
